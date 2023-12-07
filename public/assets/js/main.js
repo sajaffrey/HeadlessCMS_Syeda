@@ -13,6 +13,15 @@ xhr.addEventListener('load', function(){
 	}
 })
 
+
+//Fetch code
+
+
+fetch("assets/js/data/content.json")
+.then((response) => response.json())
+.then((data) => console.log({ data }));
+
+
 //SIDEBAR DROPDOWN
 const allDropdown = document.querySelectorAll('#sidebar .side-dropdown');
 const sidebar = document.getElementById('sidebar');
