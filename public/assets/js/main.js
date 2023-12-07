@@ -1,3 +1,18 @@
+console.log('hello');
+//xhr code
+const xhr = new XMLHttpRequest();
+xhr.open('GET', 'assets/js/data/content.json')
+xhr.send();
+
+xhr.addEventListener('load', function(){
+	try{
+		console.log(this.responseText);
+	}
+	catch(error){
+		console.warn('Error: ', error)
+	}
+})
+
 //SIDEBAR DROPDOWN
 const allDropdown = document.querySelectorAll('#sidebar .side-dropdown');
 const sidebar = document.getElementById('sidebar');
