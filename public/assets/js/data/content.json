@@ -1,82 +1,21 @@
 {
-    "siteName": "Dashboard Kit",
-    "contactEmail": "sajaffrey@myseneca.ca",
-    "phone": "(647) 212-9323",
-    "url": "https://github.com/sajaffrey/HeadlessCMS_Syeda",
-    "mainnav": [
-    
-        { 
-        "mainnav_heading" : "Unresolved",
-        "mainnav _value" :60
+    "mainNav": [
+       { 
+        "mainNav_heading" : "Unresolved",
+        "mainNav_value" :60
      },
      { 
-        "mainnav_heading" : "Overdue",
-        "mainnav _value" :16
+        "mainNav_heading" : "Overdue",
+        "mainNav_value" :16
      },
      { 
-        "mainnav_heading" : "Open",
-        "mainnav_value" :43
+        "mainNav_heading" : "Open",
+        "mainNav_value" :43
      },
-     { 
-        "mainnav_heading" : "On Hold",
-        "mainnav_value" :64
-     },
-    { 
-    "title": "OVERVIEW",
-    "author": "Aliya",
-    "Unresolved": "60",
-    "Overdue": "16",
-    "Open": "43",
-    "On hold": "64"
-    },
-
-    {
-    "title": "Today’s trends",
-    "date":"May 25th 2019, 09:41PM",
-    "author": "Aliya",
-    "Resolved": "449",
-    "Received": "426",
-    "Average first response time": "33m",
-    "Average response time": "3h 8m",
-    "Resolution within SLA":"94%"
-    },
-
-    {
-        "title": "Agents",
-        "author": "Aliya",
-        "Agent 1": "Amy Vird",
-        "Agent 2": "Indiana Jones",
-        "Agent 3": "Liva Clean",
-        "Agent 4": " Sam Rao"
-        },  
-        
-        {
-        "title": "Agents",
-        "author": "Aliya",
-        "Agent 5": "Lilly Norway",
-        "Agent 6": "Elliot Chase",
-        "Agent 7": "Ken mill",
-        "Agent 8": "Ian Jain"
-        },
-
-
-    {
-    "title": "Unresolved tickets",
-    "author": "Aliya",
-    "Waiting on Feature Request": "4238",
-    "Awaiting Customer Response": "1005",
-    "Awaiting Developer Fix": "914",
-    "Pending": "281"
-    },
-
-    {
-    "title": "Tasks",
-    "author": "Aliya",
-    "Finish ticket update": "URGENT",
-    "Create new ticket example": "NEW",
-    "Update ticket report": "DEFAULT"
-    }
-
+     {
+        "mainNav_heading" : "On-Hold",
+        "mainNav_value" :64
+     }
     ]
-    
-    }
+  
+}
