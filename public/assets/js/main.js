@@ -4,47 +4,93 @@ const xhr = new XMLHttpRequest();
 xhr.open('GET', 'assets/js/data/content.json')
 xhr.send();
 
-xhr.addEventListener('load', function(){
-	try{
+xhr.addEventListener('load', function () {
+	try {
 		console.log(this.responseText);
 	}
-	catch(error){
+	catch (error) {
 		console.warn('Error: ', error)
 	}
 })
 
-async function getValue(){
-    try {
-    const result = await fetch('assets/js/data/content.json')
-    const response = await result.json();
+async function getValue() {
+	try {
+		const result = await fetch('assets/js/data/content.json')
+		const response = await result.json();
 
-    console.log({response});
-
-
-    const mainNav_heading = document.querySelectorAll('.MidHead')
-    const mainNav_value = document.querySelectorAll('.MidValue')
+		console.log({ response });
 
 
-  
-    mainNav_heading.forEach((temp, index) => {
-            // console.log(temp);
-            let pmainNav = document.createElement('p');
-            pmainNav.innerHTML = response.mainNav[index].mainNav_heading;
-            temp.appendChild(pmainNav);
-        })
+		const mainNav_heading = document.querySelectorAll('.MidHead')
+		const mainNav_value = document.querySelectorAll('.MidValue')
+		const infoBtnTitle = document.querySelectorAll('#unresolvedTitle')
+		const infoBtnValue = document.querySelectorAll('#unresolved')
+		// const midsecTitle = document.getElementById('#"midsecTitle')
+		// const midsecValue = document.getElementById('#midsecValue')
+
+		mainNav_heading.forEach((temp, index) => {
+			// console.log(temp);
+			let pmainNav = document.createElement('p');
+			pmainNav.innerHTML = response.mainNav[index].mainNav_heading;
+			temp.appendChild(pmainNav);
+		})
 		mainNav_value.forEach((temp, index) => {
-            // console.log(temp);
-            let pmainNav = document.createElement('p');
-            pmainNav.innerHTML = response.mainNav[index].mainNav_value;
-            temp.appendChild(pmainNav);
-        })
-    } catch (error) {
-        console.log(error);
-    }
+			// console.log(temp);
+			let pmainNav = document.createElement('p');
+			pmainNav.innerHTML = response.mainNav[index].mainNav_value;
+			temp.appendChild(pmainNav);
+		})
+		infoBtnTitle.forEach((temp, index) => {
+			// console.log(temp);
+			let pleftInfo = document.createElement('p');
+			pleftInfo.innerHTML = response.leftInfo[index].infoBtnTitle;
+			temp.appendChild(pleftInfo);
+		})
+		infoBtnValue.forEach((temp, index) => {
+			// console.log(temp);
+			let pleftInfo = document.createElement('p');
+			pleftInfo.innerHTML = response.leftInfo[index].infoBtnValue;
+			temp.appendChild(pleftInfo);
+		})
+		// midsecTitle.forEach((temp, index) => {
+		//     // console.log(temp);
+		//     let pmidSection= document.createElement('p');
+		//     pmidSection.innerHTML = response.midSection[index].midsecTitle;
+		//     temp.appendChild(pmidSection);
+		// })
+		// midsecValue.forEach((temp, index) => {
+		//     // console.log(temp);
+		//     let pmidSection = document.createElement('p');
+		//     pmidSection.innerHTML = response.midSection[index].midsecValue;
+		//     temp.appendChild(pmidSection);
+		// })
+	} catch (error) {
+		console.log(error);
+	}
 }
 getValue();
 
+$.ajax({
 
+	url: 'assets/js/data/content.json',
+	success: function (results) {
+
+
+		// ADD 2 CARDS
+		// LEFT CARD - GRAPH
+		$.each(results.leftInfo, function () {
+			var container = $(".unresolved-tickets");
+			$(container).append(`
+            <li class="list-group-item d-flex flex-column align-items-center justify-content-center">
+                    ${this.infoBtnTitle}
+                <p><strong>${this.infoBtnValue}</strong></p>
+            </li>
+
+            `);
+
+		});
+	}
+});
 
 
 
@@ -52,13 +98,13 @@ getValue();
 const allDropdown = document.querySelectorAll('#sidebar .side-dropdown');
 const sidebar = document.getElementById('sidebar');
 
-allDropdown.forEach(item=> {
+allDropdown.forEach(item => {
 	const a = item.parentElement.querySelector('a:first-child');
 	a.addEventListener('click', function (e) {
 		e.preventDefault();
 
-		if(!this.classList.contains('active')) {
-			allDropdown.forEach(i=> {
+		if (!this.classList.contains('active')) {
+			allDropdown.forEach(i => {
 				const aLink = i.parentElement.querySelector('a:first-child');
 
 				aLink.classList.remove('active');
@@ -77,17 +123,17 @@ allDropdown.forEach(item=> {
 const toggleSidebar = document.querySelector('nav .toggle-sidebar');
 const allSideDivider = document.querySelectorAll('#sidebar .divider');
 
-if(sidebar.classList.contains('hide')) {
-	allSideDivider.forEach(item=> {
+if (sidebar.classList.contains('hide')) {
+	allSideDivider.forEach(item => {
 		item.textContent = '-'
 	})
-	allDropdown.forEach(item=> {
+	allDropdown.forEach(item => {
 		const a = item.parentElement.querySelector('a:first-child');
 		a.classList.remove('active');
 		item.classList.remove('show');
 	})
 } else {
-	allSideDivider.forEach(item=> {
+	allSideDivider.forEach(item => {
 		item.textContent = item.dataset.text;
 	})
 }
@@ -95,18 +141,18 @@ if(sidebar.classList.contains('hide')) {
 toggleSidebar.addEventListener('click', function () {
 	sidebar.classList.toggle('hide');
 
-	if(sidebar.classList.contains('hide')) {
-		allSideDivider.forEach(item=> {
+	if (sidebar.classList.contains('hide')) {
+		allSideDivider.forEach(item => {
 			item.textContent = '-'
 		})
 
-		allDropdown.forEach(item=> {
+		allDropdown.forEach(item => {
 			const a = item.parentElement.querySelector('a:first-child');
 			a.classList.remove('active');
 			item.classList.remove('show');
 		})
 	} else {
-		allSideDivider.forEach(item=> {
+		allSideDivider.forEach(item => {
 			item.textContent = item.dataset.text;
 		})
 	}
@@ -116,13 +162,13 @@ toggleSidebar.addEventListener('click', function () {
 
 
 sidebar.addEventListener('mouseleave', function () {
-	if(this.classList.contains('hide')) {
-		allDropdown.forEach(item=> {
+	if (this.classList.contains('hide')) {
+		allDropdown.forEach(item => {
 			const a = item.parentElement.querySelector('a:first-child');
 			a.classList.remove('active');
 			item.classList.remove('show');
 		})
-		allSideDivider.forEach(item=> {
+		allSideDivider.forEach(item => {
 			item.textContent = '-'
 		})
 	}
@@ -131,13 +177,13 @@ sidebar.addEventListener('mouseleave', function () {
 
 
 sidebar.addEventListener('mouseenter', function () {
-	if(this.classList.contains('hide')) {
-		allDropdown.forEach(item=> {
+	if (this.classList.contains('hide')) {
+		allDropdown.forEach(item => {
 			const a = item.parentElement.querySelector('a:first-child');
 			a.classList.remove('active');
 			item.classList.remove('show');
 		})
-		allSideDivider.forEach(item=> {
+		allSideDivider.forEach(item => {
 			item.textContent = item.dataset.text;
 		})
 	}
@@ -161,7 +207,7 @@ sidebar.addEventListener('mouseenter', function () {
 // MENU
 const allMenu = document.querySelectorAll('main .content-data .head .menu');
 
-allMenu.forEach(item=> {
+allMenu.forEach(item => {
 	const icon = item.querySelector('.icon');
 	const menuLink = item.querySelector('.menu-link');
 
@@ -173,20 +219,20 @@ allMenu.forEach(item=> {
 
 
 window.addEventListener('click', function (e) {
-	if(e.target !== imgProfile) {
-		if(e.target !== dropdownProfile) {
-			if(dropdownProfile.classList.contains('show')) {
+	if (e.target !== imgProfile) {
+		if (e.target !== dropdownProfile) {
+			if (dropdownProfile.classList.contains('show')) {
 				dropdownProfile.classList.remove('show');
 			}
 		}
 	}
 
-	allMenu.forEach(item=> {
+	allMenu.forEach(item => {
 		const icon = item.querySelector('.icon');
 		const menuLink = item.querySelector('.menu-link');
 
-		if(e.target !== icon) {
-			if(e.target !== menuLink) {
+		if (e.target !== icon) {
+			if (e.target !== menuLink) {
 				if (menuLink.classList.contains('show')) {
 					menuLink.classList.remove('show')
 				}
@@ -202,7 +248,7 @@ window.addEventListener('click', function (e) {
 // PROGRESSBAR
 const allProgress = document.querySelectorAll('main .card .progress');
 
-allProgress.forEach(item=> {
+allProgress.forEach(item => {
 	item.style.setProperty('--value', item.dataset.value)
 })
 

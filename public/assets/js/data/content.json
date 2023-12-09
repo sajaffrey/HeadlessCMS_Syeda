@@ -1,21 +1,40 @@
 {
+    "siteName": "Dashboard Kit",
+    "contactEmail": "sajaffrey@myseneca.ca",
     "mainNav": [
-       { 
-        "mainNav_heading" : "Unresolved",
-        "mainNav_value" :60
-     },
-     { 
-        "mainNav_heading" : "Overdue",
-        "mainNav_value" :16
-     },
-     { 
-        "mainNav_heading" : "Open",
-        "mainNav_value" :43
-     },
-     {
-        "mainNav_heading" : "On-Hold",
-        "mainNav_value" :64
-     }
+        {
+            "mainNav_heading": "Unresolved",
+            "mainNav_value": 60
+        },
+        {
+            "mainNav_heading": "Overdue",
+            "mainNav_value": 16
+        },
+        {
+            "mainNav_heading": "Open",
+            "mainNav_value": 43
+        },
+        {
+            "mainNav_heading": "On-Hold",
+            "mainNav_value": 64
+        }
+    ],
+    "leftInfo": [
+        {
+            "infoBtnTitle": "Waiting on Feature Request",
+            "infoBtnValue": "4238"
+        },
+        {
+            "infoBtnTitle": " Awaiting Customer Response",
+            "infoBtnValue": "1005"
+        },
+        {
+            "infoBtnTitle": "Awaiting Developer Fix",
+            "infoBtnValue": "914"
+        },
+        {
+            "infoBtnTitle": "Pending",
+            "infoBtnValue": "281"
+        }
     ]
-  
 }
