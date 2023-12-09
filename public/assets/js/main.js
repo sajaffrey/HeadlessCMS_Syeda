@@ -25,9 +25,8 @@ async function getValue() {
 		const mainNav_value = document.querySelectorAll('.MidValue')
 		const infoBtnTitle = document.querySelectorAll('#unresolvedTitle')
 		const infoBtnValue = document.querySelectorAll('#unresolved')
-		// const midsecTitle = document.getElementById('#"midsecTitle')
-		// const midsecValue = document.getElementById('#midsecValue')
 
+		//main nav card properties:
 		mainNav_heading.forEach((temp, index) => {
 			// console.log(temp);
 			let pmainNav = document.createElement('p');
@@ -40,6 +39,8 @@ async function getValue() {
 			pmainNav.innerHTML = response.mainNav[index].mainNav_value;
 			temp.appendChild(pmainNav);
 		})
+
+		//main section card properties:
 		infoBtnTitle.forEach((temp, index) => {
 			// console.log(temp);
 			let pleftInfo = document.createElement('p');
@@ -52,18 +53,7 @@ async function getValue() {
 			pleftInfo.innerHTML = response.leftInfo[index].infoBtnValue;
 			temp.appendChild(pleftInfo);
 		})
-		// midsecTitle.forEach((temp, index) => {
-		//     // console.log(temp);
-		//     let pmidSection= document.createElement('p');
-		//     pmidSection.innerHTML = response.midSection[index].midsecTitle;
-		//     temp.appendChild(pmidSection);
-		// })
-		// midsecValue.forEach((temp, index) => {
-		//     // console.log(temp);
-		//     let pmidSection = document.createElement('p');
-		//     pmidSection.innerHTML = response.midSection[index].midsecValue;
-		//     temp.appendChild(pmidSection);
-		// })
+
 	} catch (error) {
 		console.log(error);
 	}
@@ -75,9 +65,6 @@ $.ajax({
 	url: 'assets/js/data/content.json',
 	success: function (results) {
 
-
-		// ADD 2 CARDS
-		// LEFT CARD - GRAPH
 		$.each(results.leftInfo, function () {
 			var container = $(".unresolved-tickets");
 			$(container).append(`
