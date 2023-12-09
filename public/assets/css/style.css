@@ -573,7 +573,8 @@ main .info-data .card {
 	transition: all .2s ease-in-out;
 }
 
-.MidHead {
+.MidHead,
+.MidValue {
 	display: flex;
 	justify-content: center;
 	align-items: center;
